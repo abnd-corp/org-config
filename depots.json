@@ -1,0 +1,7 @@
+{
+  "abnd": {}, "abcom": {}, "AbX2T": {}, "Abloue": {}, "Abyss": {}, "abvance": {}, "abwatch": {}, "Abcarte": {}, "template": {},
+  "abatelier": {
+    "noms": true,
+    "controles": ["API", "Tests API", "Front", "Tests front", "E2E (Chromium + Firefox)", "Sécurité", "Sauvegardes", "Linter et mise en forme", "Factures électroniques"]
+  }
+}
