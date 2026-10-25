@@ -1,6 +1,7 @@
 {
-  "abnd": {}, "abcom": {}, "AbX2T": {}, "Abloue": {}, "Abyss": {}, "abvance": {}, "abwatch": {}, "Abcarte": {}, "template": {},
+  "abnd": { "closes": true }, "abcom": {}, "AbX2T": {}, "Abloue": { "closes": true }, "Abyss": { "closes": true }, "abvance": { "closes": true }, "abwatch": { "closes": true }, "Abcarte": {}, "template": { "closes": true },
   "abatelier": {
+    "closes": true,
     "noms": true,
     "controles": ["API", "Tests API", "Front", "Tests front", "E2E (Chromium + Firefox)", "Sécurité", "Sauvegardes", "Linter et mise en forme", "Factures électroniques"]
   }

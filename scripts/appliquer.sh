@@ -30,7 +30,11 @@ for depot in $cibles; do
   jq -e --arg d "$depot" 'has($d)' "$racine/depots.json" >/dev/null || { echo "$depot : absent de depots.json"; continue; }
   [ "$(gh api "repos/$org/$depot" --jq .visibility)" = public ] || { echo "$depot : privé, rien à appliquer"; continue; }
   mapfile -t propres < <(jq -r --arg d "$depot" '.[$d].controles // [] | .[]' "$racine/depots.json")
-  poser "$depot" dev "$(contextes "$source" "${gouv[@]}" "${propres[@]}")" '__CONTROLES_DEV__'
+  # R3 : « Issue liée » n'est obligatoire que pour les dépôts qui appellent déjà la version du contrôle qui le porte
+  # (option "closes" de depots.json) : exiger un contrôle absent bloquerait toutes leurs PR.
+  gouv_dev=("${gouv[@]}")
+  if [ "$(jq -r --arg d "$depot" '.[$d].closes // false' "$racine/depots.json")" = true ]; then gouv_dev+=("Contrôle des PR / Issue liée"); fi
+  poser "$depot" dev "$(contextes "$source" "${gouv_dev[@]}" "${propres[@]}")" '__CONTROLES_DEV__'
   poser "$depot" promotion "$(contextes "$source" "${propres[@]}")" '__CONTROLES_PROMOTION__'
   if [ "$(jq -r --arg d "$depot" '.[$d].noms // false' "$racine/depots.json")" = true ]; then
     poser "$depot" noms '[]' '__AUCUN__'

@@ -5,7 +5,7 @@ Les règles de l'organisation Abnd sous forme de fichiers (charte R7). On les ch
 ## Contenu
 
 - `rulesets/` : `dev` (PR depuis `feature/**`, squash), `promotion` (`staging` et `main`, merge commit, commits signés R10), `noms` (seulement `feature/**` et `dependabot/**`).
-- `depots.json` : les dépôts suivis, avec leurs contrôles de CI propres et l'option `noms`.
+- `depots.json` : les dépôts suivis, avec leurs contrôles de CI propres, l'option `noms` et l'option `closes` (le contrôle « Issue liée » de R3 (« Closes #N » dans la description) devient obligatoire sur `dev` ; à mettre quand le dépôt appelle la version du 25 octobre 2026 ou plus récente du contrôle de PR).
 - `scripts/appliquer.sh` : crée ou met à jour les rulesets (`--tous`, ou un dépôt ; `--simuler` pour voir sans rien changer).
 
 ## Utilisation
